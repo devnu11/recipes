@@ -59,4 +59,4 @@ Handwritten on following page (page 65) — dough:
 - disolve[?] yeast + milk salt, sugar, egg shortening, + 1/2 flour.
 - mix.
 - knead 6 min[?]
-- rise to double, panch[?] dawn.
+- rise to double, punch down.
