@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<div class="search">
+    <input type="search" id="search-box" placeholder="Search recipes and ingredients…"
+           autocomplete="off" aria-label="Search recipes">
+    <ul id="search-results" hidden></ul>
+</div>
+
+<div id="recipe-index">
+    {% assign grouped = site.recipes | group_by: "category" | sort: "name" %}
+    {% for group in grouped %}
+    <section class="category-group">
+        <h2>{{ group.name | default: "Uncategorized" }}</h2>
+        <ul>
+            {% assign sorted = group.items | sort: "title" %}
+            {% for recipe in sorted %}
+            <li><a href="{{ recipe.url | relative_url }}">{{ recipe.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+</div>
+
+<script src="{{ '/assets/search.js' | relative_url }}" defer></script>

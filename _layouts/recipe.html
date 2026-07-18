@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="recipe">
+    <h1>{{ page.title }}</h1>
+    <p class="meta">
+        {% if page.category %}<span class="category">{{ page.category }}</span> ·{% endif %}
+        source page{% if page.images.size > 1 %}s{% endif %} {{ page.source_page }}
+    </p>
+
+    {{ content }}
+
+    <section class="original">
+        <h2>Original</h2>
+        {% for img in page.images %}
+        <a href="{{ img | relative_url }}">
+            <img src="{{ img | relative_url }}" alt="Original scan of {{ page.title }}" loading="lazy">
+        </a>
+        {% endfor %}
+    </section>
+</article>

@@ -1,0 +1,21 @@
+title: Grandma's Cookbook
+description: Family recipes, transcribed from the original cards and clippings.
+
+collections:
+  recipes:
+    output: true
+    permalink: /recipes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: recipes
+    values:
+      layout: recipe
+
+exclude:
+  - PLAN.md
+  - TRANSCRIPTION_NOTES.md
+  - REVIEW.md
+  - tools/
+  - README.md
