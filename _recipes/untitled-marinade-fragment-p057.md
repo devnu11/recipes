@@ -1,6 +1,6 @@
 ---
 title: "[Untitled marinade fragment]"
-category: Misc.
+category: Misc
 source_page: 57
 images:
   - /images/originals/page-057.jpg

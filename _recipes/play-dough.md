@@ -1,9 +1,10 @@
 ---
 title: Play Dough
-category: Misc.
-source_page: 2
+category: Misc
+source_page: 2, 102
 images:
   - /images/originals/page-002.jpg
+  - /images/originals/page-102.jpg
 ---
 
 ## Ingredients
@@ -25,3 +26,5 @@ images:
 Keeps 3 months unrefrigerated.
 
 Discovery Toys (printed card with logo)
+
+The same card appears again on page 102.
