@@ -1,0 +1,5 @@
+*.pdf
+_site/
+.jekyll-cache/
+ocr-text/
+.DS_Store
