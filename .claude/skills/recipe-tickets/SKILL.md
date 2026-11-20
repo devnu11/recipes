@@ -24,8 +24,10 @@ Download attachments into a fresh empty directory.
 
 ## Workflow
 
-1. List tickets: `gh issue list --repo devnu11/recipes --label recipe --state open`.
-   Confirm with the user which to process if more than one.
+1. List tickets: `gh issue list --repo devnu11/recipes --label recipe --state open`
+   (also check unlabeled issues titled "Recipe:" — the label only applies
+   if it exists in the repo). Confirm with the user which to process if
+   more than one.
 2. For each issue:
    a. `gh issue view <n> --repo devnu11/recipes --json title,body,comments`.
    b. Download any image attachments from the body (curl -L into a new empty
@@ -69,7 +71,9 @@ Download attachments into a fresh empty directory.
 
    Use the ticket's category; pick the best fit if "Not sure". Copy each
    attachment to `images/originals/issue-<n>-<slug>.jpg` (-2, -3 for
-   extras). No photo → omit the `images` key.
+   extras). No photo → omit the `images` key. Recipes with no book page
+   may use `source:` (free text, e.g. "submitted by Melissa K") instead
+   of `source_page`.
 5. Validate before committing: front matter parses as YAML; title,
    category, source_page present; every listed image file exists; category
    is from the list above.
