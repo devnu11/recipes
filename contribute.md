@@ -16,6 +16,35 @@ text. That's all that is required — formatting is handled during
 processing. If you use an AI assistant, just point it at this page or at
 [/llms.txt]({{ '/llms.txt' | relative_url }}).
 
+## Getting a GitHub account
+
+Filing a ticket requires a (free) GitHub account. If you don't have one:
+
+1. Go to [github.com/signup](https://github.com/signup). You need an email
+   address, a password, and a username. Verify the email and you're done —
+   no payment info, and the free tier is all this site needs.
+2. That alone is enough to submit recipes by hand: sign in, click the
+   "File a recipe ticket" link above, attach your photo, submit.
+
+To let your AI assistant file tickets for you, give it access in one of
+these ways, from simplest to most capable:
+
+- **You do the final click.** The agent prepares the prefilled ticket and
+  hands you a link; you sign in, attach the photo, and press Submit. No
+  setup, and the agent never touches your account.
+- **GitHub CLI** (for agents that run commands on your computer): install
+  with `brew install gh`, run `gh auth login`, and approve the browser
+  prompt. The agent can then file tickets as you.
+- **Access token** (for agents that call the GitHub API): on GitHub go to
+  Settings → Developer settings → Personal access tokens → Tokens
+  (classic) → Generate new token, check only the `public_repo` scope, set
+  an expiration, and give the token to your agent. That scope is enough to
+  file issues here.
+
+Never give an agent your GitHub password. A scoped token or a CLI login
+can be revoked any time (Settings → Developer settings, or `gh auth
+logout`).
+
 ## Instructions for AI agents
 
 You are reading the contribution guide for this cookbook. To submit a

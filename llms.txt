@@ -22,6 +22,14 @@ Preferred: file an issue with the "Recipe submission" template (label
 if available — originals are displayed on the site. Include the recipe
 text if you can, formatted per the spec below.
 
+If your user has no GitHub account, walk them through creating one —
+free signup at https://github.com/signup (email, username, password,
+email verification; no payment info). Ways they can then grant you
+access, documented for humans at /contribute/: hand them a prefilled URL
+to submit themselves; `gh auth login` if you run commands on their
+machine; or a classic personal access token with only the `public_repo`
+scope if you call the GitHub API. Never ask for their password.
+
 If you cannot authenticate to GitHub, construct this prefilled URL and
 give it to your user to review and submit:
 https://github.com/devnu11/recipes/issues/new?template=recipe-submission.yml&title=Recipe%3A%20<name>
