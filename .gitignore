@@ -4,3 +4,4 @@ _site/
 ocr-text/
 .DS_Store
 _incoming/
+_tickets/

@@ -27,6 +27,19 @@ images:
 
 Push. The index and search update on the next Pages build.
 
+## Processing submission tickets
+
+```
+tools/tickets.sh list        # open recipe tickets
+tools/tickets.sh fetch       # download tickets + photos to _tickets/
+# transcribe _tickets/issue-N/ into _recipes/issue-N-<slug>.md
+# copy photos to images/originals/issue-N-<slug>.jpg
+tools/tickets.sh submit N -m "reviewer notes"   # branch + push + PR
+```
+
+With Claude Code in this repo, "process the recipe tickets" runs the
+whole flow (the transcription step included).
+
 ## Layout
 
 - `_recipes/` — one markdown file per recipe

@@ -24,20 +24,20 @@ Download attachments into a fresh empty directory.
 
 ## Workflow
 
-1. List tickets: `gh issue list --repo devnu11/recipes --label recipe --state open`
-   (also check unlabeled issues titled "Recipe:" — the label only applies
-   if it exists in the repo). Confirm with the user which to process if
-   more than one.
-2. For each issue:
-   a. `gh issue view <n> --repo devnu11/recipes --json title,body,comments`.
-   b. Download any image attachments from the body (curl -L into a new empty
-      temp dir). Read each image.
-   c. Produce the transcription. Photo present → transcribe from the photo
-      (the photo is authoritative; supplied text is a cross-check). Text
-      only → restructure it without rewording.
-   d. A ticket may contain several recipes (multiple photos or text
-      blocks): write one .md file per recipe; all recipes from one ticket
-      share one branch and one PR.
+The mechanical steps are scripted in `tools/tickets.sh`; only the
+transcription step needs intelligence.
+
+1. `tools/tickets.sh fetch` — downloads every open recipe ticket
+   (metadata, body, photos) into `_tickets/issue-N/`. Use
+   `tools/tickets.sh list` to see what is open. Confirm with the user
+   which tickets to process if more than one.
+2. For each fetched ticket, read `_tickets/issue-N/body.md` and the
+   `photo-*.jpg` files, then produce the transcription. Photo present →
+   transcribe from the photo (the photo is authoritative; supplied text
+   is a cross-check). Text only → restructure it without rewording. A
+   ticket may contain several recipes (multiple photos or text blocks):
+   write one .md file per recipe; all recipes from one ticket share one
+   branch and one PR.
 3. Transcription rules (same as the rest of the book):
    - VERBATIM wording: keep original spelling, abbreviations (Tbs., oleo,
      1/2), quirks. No rewording, no unit normalization, no clarifications.
@@ -70,24 +70,17 @@ Download attachments into a fresh empty directory.
    ```
 
    Use the ticket's category; pick the best fit if "Not sure". Copy each
-   attachment to `images/originals/issue-<n>-<slug>.jpg` (-2, -3 for
-   extras). No photo → omit the `images` key. Recipes with no book page
-   may use `source:` (free text, e.g. "submitted by Melissa K") instead
-   of `source_page`.
+   photo from `_tickets/issue-<n>/` to
+   `images/originals/issue-<n>-<slug>.jpg` (-2, -3 for extras). No photo
+   → omit the `images` key. Recipes with no book page may use `source:`
+   (free text, e.g. "submitted by Melissa K") instead of `source_page`.
 5. Validate before committing: front matter parses as YAML; title,
    category, source_page present; every listed image file exists; category
    is from the list above.
-6. PR, one per issue (containing every recipe from that issue):
-   ```
-   git checkout main && git checkout -b add-recipe/<slug>
-   git add _recipes/<slug>.md images/originals/issue-<n>-*
-   git commit -m "Add <Title> from issue #<n>"
-   git push -u origin add-recipe/<slug>
-   gh pr create --repo devnu11/recipes \
-     --title "Add recipe: <Title>" \
-     --body "Transcribed from issue ticket. Closes #<n>. <notes on [?]/[illegible] markers, if any>"
-   git checkout main
-   ```
+6. `tools/tickets.sh submit <n> -m "<reviewer notes>"` — branches,
+   commits, pushes, and opens the PR (with "Closes #<n>") for every
+   prepared `issue-<n>-*` file. Put the [?]/[illegible] flags the
+   reviewer should check in the -m notes.
 7. Report per issue: PR link, and any uncertain readings the reviewer
    should check against the photo.
 
