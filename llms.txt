@@ -1,0 +1,63 @@
+# Grandma's Cookbook
+
+> Family recipe archive: transcriptions of handwritten and clipped recipe
+> cards, with scans of the originals. Static Jekyll site; content lives in
+> the GitHub repository devnu11/recipes.
+
+This file is for AI agents. Humans: see /contribute/ on this site.
+
+## Reading
+
+- Recipe index: / (category-grouped list of all recipes)
+- Search index with full text of every recipe, as JSON: /search.json
+- Each recipe page links its original scanned image.
+
+## Submitting a recipe
+
+Submissions are GitHub issues on devnu11/recipes. Do not open pull
+requests; maintainers generate the PR from the issue.
+
+Preferred: file an issue with the "Recipe submission" template (label
+`recipe`), title "Recipe: <name>". Attach a photo of the original recipe
+if available — originals are displayed on the site. Include the recipe
+text if you can, formatted per the spec below.
+
+If you cannot authenticate to GitHub, construct this prefilled URL and
+give it to your user to review and submit:
+https://github.com/devnu11/recipes/issues/new?template=recipe-submission.yml&title=Recipe%3A%20<name>
+(Photos must be attached by the user in the GitHub UI.)
+
+## Recipe text spec
+
+Transcribe VERBATIM: keep original spelling, abbreviations (Tbs., oleo,
+1/2), and quirks. Do not reword, normalize units, or add clarifications.
+Mark unreadable words [illegible]; suffix uncertain readings with [?].
+
+Structure:
+
+    Category: one of Appetizers, Salads & Dressings, Soups, Mains, Sides,
+    Breads, Cakes, Cookies & Bars, Desserts, Beverages, Misc
+
+    Attribution: who the recipe came from, if known
+
+    ## Ingredients
+
+    - 1 cup flour
+    - 1 cup sugar
+        - 3/4 cup for filling
+        - 1/4 cup for topping
+
+    ## Method
+
+    - One clear, actionable step per bullet.
+
+Rules: ingredients are one bulleted list; an ingredient used in two places
+is a parent bullet (total amount) with indented sub-bullets for the split
+usages. Method steps are bullets — no run-on sentences, no semicolons;
+split semicolon-joined clauses into separate bullets.
+
+## Links
+
+- Repository: https://github.com/devnu11/recipes
+- Issue template: https://github.com/devnu11/recipes/issues/new?template=recipe-submission.yml
+- Human contribution guide: /contribute/
