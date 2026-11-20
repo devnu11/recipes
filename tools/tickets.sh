@@ -4,8 +4,8 @@
 #
 # Usage:
 #   tools/tickets.sh list              List open recipe tickets.
-#   tools/tickets.sh fetch             Download every open ticket (metadata +
-#                                      photos) into _tickets/issue-N/.
+#   tools/tickets.sh fetch [N]         Download open ticket N (or every open
+#                                      ticket) into _tickets/issue-N/.
 #   tools/tickets.sh submit N [-m MSG] Branch, commit, push, and open a PR for
 #                                      the prepared files of ticket N.
 #
@@ -65,6 +65,10 @@ fetch_one() {
 
 cmd_fetch() {
     local n found=0
+    if [ -n "${1:-}" ]; then
+        fetch_one "$1"
+        return
+    fi
     while IFS= read -r n; do
         found=1
         fetch_one "$n"
@@ -99,7 +103,7 @@ main() {
     require_tools
     case "${1:-}" in
         list)   cmd_list ;;
-        fetch)  cmd_fetch ;;
+        fetch)  shift; cmd_fetch "$@" ;;
         submit) shift; cmd_submit "$@" ;;
         *)      sed -n '2,17p' "$0"; exit 1 ;;
     esac
