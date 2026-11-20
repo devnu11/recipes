@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+<p class="contribute-link"><a href="{{ '/contribute/' | relative_url }}">Add a recipe →</a></p>
+
 <div class="search">
     <input type="search" id="search-box" placeholder="Search recipes and ingredients…"
            autocomplete="off" aria-label="Search recipes">
@@ -21,7 +23,5 @@ layout: default
     </section>
     {% endfor %}
 </div>
-
-<p class="contribute-link"><a href="{{ '/contribute/' | relative_url }}">Add a recipe →</a></p>
 
 <script src="{{ '/assets/search.js' | relative_url }}" defer></script>
