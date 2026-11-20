@@ -1,0 +1,55 @@
+name: Recipe submission
+description: Submit a recipe with a photo of the original and/or its text.
+title: "Recipe: "
+labels: ["recipe"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Attach a photo of the original recipe card (drag it into a text
+        field below) and/or paste the recipe text. A maintainer will turn
+        this into a page on the site.
+  - type: input
+    id: attribution
+    attributes:
+      label: Who is this recipe from?
+      placeholder: e.g. Loretta, Mom, a 1972 clipping
+    validations:
+      required: false
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Appetizers
+        - Salads & Dressings
+        - Soups
+        - Mains
+        - Sides
+        - Breads
+        - Cakes
+        - Cookies & Bars
+        - Desserts
+        - Beverages
+        - Misc
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: recipe
+    attributes:
+      label: Photo and/or text of the recipe
+      description: >
+        Drag a photo of the original here, paste the recipe text, or both.
+        Text should be transcribed verbatim — keep original spelling and
+        abbreviations.
+      placeholder: |
+        (attach photo here)
+
+        ## Ingredients
+        - ...
+
+        ## Method
+        - ...
+    validations:
+      required: true
