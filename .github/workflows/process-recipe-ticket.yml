@@ -47,6 +47,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         with:
+          show_full_output: true
           anthropic_federation_rule_id: fdrl_01KGQhfkKwrrBQM55zGotLAj
           anthropic_organization_id: bfc21dc6-3d84-4ddc-b662-ed95dcf24439
           anthropic_service_account_id: svac_01VySzw8MySChHsR8ntt2K3f
