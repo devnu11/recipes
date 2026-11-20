@@ -4,12 +4,14 @@ layout: default
 <article class="recipe">
     <h1>{{ page.title }}</h1>
     <p class="meta">
-        {% if page.category %}<span class="category">{{ page.category }}</span> ·{% endif %}
-        source page{% if page.images.size > 1 %}s{% endif %} {{ page.source_page }}
+        {% if page.category %}<span class="category">{{ page.category }}</span>{% endif %}
+        {% if page.source_page %} · source page{% if page.images.size > 1 %}s{% endif %} {{ page.source_page }}{% endif %}
+        {% if page.source %} · {{ page.source }}{% endif %}
     </p>
 
     {{ content }}
 
+    {% if page.images.size > 0 %}
     <section class="original">
         <h2>Original</h2>
         {% for img in page.images %}
@@ -18,4 +20,5 @@ layout: default
         </a>
         {% endfor %}
     </section>
+    {% endif %}
 </article>

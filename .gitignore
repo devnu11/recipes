@@ -3,3 +3,4 @@ _site/
 .jekyll-cache/
 ocr-text/
 .DS_Store
+_incoming/
