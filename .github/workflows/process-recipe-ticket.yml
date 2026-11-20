@@ -2,8 +2,10 @@
 # Claude transcribes it and opens a PR. The maintainer reviews the PR
 # against the photo and merges; the site rebuilds from main.
 #
-# Setup (one time): add an ANTHROPIC_API_KEY secret
-# (repo Settings → Secrets and variables → Actions → New repository secret).
+# Auth: workload identity federation — the runner's GitHub OIDC token is
+# exchanged for a short-lived Anthropic token via the federation rule
+# below (console: Settings → Workload identities). No API-key secret
+# exists in this repo; requires the id-token: write permission.
 #
 # Cost/abuse note: this runs on every issue whose title starts with
 # "Recipe", filed by anyone, and each run spends API credits (capped by
@@ -45,7 +47,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          anthropic_federation_rule_id: fdrl_01KGQhfkKwrrBQM55zGotLAj
+          anthropic_organization_id: bfc21dc6-3d84-4ddc-b662-ed95dcf24439
+          anthropic_service_account_id: svac_01VySzw8MySChHsR8ntt2K3f
+          anthropic_workspace_id: wrkspc_01RWte352tpbTEKTZg8fPoXr
           prompt: |
             Process recipe submission ticket #${{ env.ISSUE }} by following
             .claude/skills/recipe-tickets/SKILL.md exactly. Summary of the
