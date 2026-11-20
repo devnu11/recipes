@@ -52,7 +52,9 @@ recipe on your user's behalf:
 
 1. Submissions are GitHub issues on `devnu11/recipes` — never pull
    requests. Use the "Recipe submission" template (it applies the
-   `recipe` label). Title: `Recipe: <name>`.
+   `recipe` label). Title: `Recipe: <name>`. Several recipes may share
+   one ticket (multiple photos or text blocks); they are processed
+   together.
 2. A photo of the original recipe is the most valuable part of a
    submission. If you can authenticate to GitHub, attach it to the issue.
    If you cannot, build this prefilled URL and hand it to your user to

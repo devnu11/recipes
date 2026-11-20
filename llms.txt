@@ -18,7 +18,9 @@ Submissions are GitHub issues on devnu11/recipes. Do not open pull
 requests; maintainers generate the PR from the issue.
 
 Preferred: file an issue with the "Recipe submission" template (label
-`recipe`), title "Recipe: <name>". Attach a photo of the original recipe
+`recipe`), title "Recipe: <name>". One recipe per ticket is typical, but
+a ticket may hold several recipes (multiple photos or text blocks); they
+are processed together into one pull request. Attach a photo of the original recipe
 if available — originals are displayed on the site. Include the recipe
 text if you can, formatted per the spec below.
 

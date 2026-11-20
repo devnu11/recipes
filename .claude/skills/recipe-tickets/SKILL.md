@@ -33,6 +33,9 @@ Download attachments into a fresh empty directory.
    c. Produce the transcription. Photo present → transcribe from the photo
       (the photo is authoritative; supplied text is a cross-check). Text
       only → restructure it without rewording.
+   d. A ticket may contain several recipes (multiple photos or text
+      blocks): write one .md file per recipe; all recipes from one ticket
+      share one branch and one PR.
 3. Transcription rules (same as the rest of the book):
    - VERBATIM wording: keep original spelling, abbreviations (Tbs., oleo,
      1/2), quirks. No rewording, no unit normalization, no clarifications.
@@ -70,7 +73,7 @@ Download attachments into a fresh empty directory.
 5. Validate before committing: front matter parses as YAML; title,
    category, source_page present; every listed image file exists; category
    is from the list above.
-6. PR, one per issue:
+6. PR, one per issue (containing every recipe from that issue):
    ```
    git checkout main && git checkout -b add-recipe/<slug>
    git add _recipes/<slug>.md images/originals/issue-<n>-*
